@@ -5,8 +5,9 @@
 // Copy the contents of the customers.json and make that object the value of customers.
 // From that object extract just the customers' email addresses and store them in a new array. You will need to use methods such as map(), forEach() and/or concat() to accomplish this.
 
-const customersDataBlock = {         //creates large objects encompassing all of the email data via the value of the object being the "customers" data block
-    
+//Puts the array of objects into one object//
+const customersDataBlock = {         
+
         "customers": [
           {
             "location": {
@@ -250,3 +251,15 @@ const customersDataBlock = {         //creates large objects encompassing all of
           }
         ]
       }
+
+//creates object function using map method to extract value from key parameter of the large created object holding the  array of objecgts//
+let customerEmails = customersDataBlock.customers.map(function (key) {
+  //method map excutes and returns the email address of each objects within the array within the object.//
+  return key.contacts.email
+});
+
+//creates new array, then applies the value of "customerEmails" to the created array
+const customerEmailArray = [].concat.apply([], customerEmails);
+
+console.log(customerEmailArray);
+
